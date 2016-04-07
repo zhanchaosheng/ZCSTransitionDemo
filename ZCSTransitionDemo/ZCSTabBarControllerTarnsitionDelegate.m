@@ -7,6 +7,7 @@
 //
 
 #import "ZCSTabBarControllerTarnsitionDelegate.h"
+#import "ZCSTransitionAnimationController.h"
 
 @implementation ZCSTabBarControllerTarnsitionDelegate
 
@@ -20,7 +21,12 @@
                      animationControllerForTransitionFromViewController:(UIViewController *)fromVC
                                                        toViewController:(UIViewController *)toVC
 {
-    return nil;
+    NSUInteger fromIndex = [tabBarController.viewControllers indexOfObject:fromVC];
+    NSUInteger toIndex = [tabBarController.viewControllers indexOfObject:toVC];
+    TransitionOperation operation = toIndex < fromIndex ? TabOperationDirectionLeft : TabOperationDirectionRigth;
+    
+    return [[ZCSTransitionAnimationController alloc] initWithTransitionType:TransitionTypeTab
+                                                    WithTransitionOperation:operation];
 }
 
 - (void)setInteractive:(BOOL)interactive {

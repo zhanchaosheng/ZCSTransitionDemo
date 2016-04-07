@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		119D28941CB5FB5F007F1BC6 /* ZCSTransitionAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 119D28931CB5FB5F007F1BC6 /* ZCSTransitionAnimationController.m */; };
+		119D28971CB64CEF007F1BC6 /* ZCSNavigationControllerTransitionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 119D28961CB64CEF007F1BC6 /* ZCSNavigationControllerTransitionDelegate.m */; };
+		119D289A1CB64F29007F1BC6 /* FirstNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 119D28991CB64F29007F1BC6 /* FirstNavigationController.m */; };
 		1AAE73FD1CB54B22007020CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE73FC1CB54B22007020CC /* main.m */; };
 		1AAE74001CB54B22007020CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE73FF1CB54B22007020CC /* AppDelegate.m */; };
 		1AAE74031CB54B22007020CC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE74021CB54B22007020CC /* ViewController.m */; };
@@ -40,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		119D28921CB5FB5F007F1BC6 /* ZCSTransitionAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSTransitionAnimationController.h; sourceTree = "<group>"; };
+		119D28931CB5FB5F007F1BC6 /* ZCSTransitionAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSTransitionAnimationController.m; sourceTree = "<group>"; };
+		119D28951CB64CEF007F1BC6 /* ZCSNavigationControllerTransitionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSNavigationControllerTransitionDelegate.h; sourceTree = "<group>"; };
+		119D28961CB64CEF007F1BC6 /* ZCSNavigationControllerTransitionDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSNavigationControllerTransitionDelegate.m; sourceTree = "<group>"; };
+		119D28981CB64F29007F1BC6 /* FirstNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstNavigationController.h; sourceTree = "<group>"; };
+		119D28991CB64F29007F1BC6 /* FirstNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstNavigationController.m; sourceTree = "<group>"; };
 		1AAE73F81CB54B20007020CC /* ZCSTransitionDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZCSTransitionDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AAE73FC1CB54B22007020CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1AAE73FE1CB54B22007020CC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +129,8 @@
 				1AAE74021CB54B22007020CC /* ViewController.m */,
 				1AAE742E1CB54C8F007020CC /* RootViewController.h */,
 				1AAE742F1CB54C8F007020CC /* RootViewController.m */,
+				119D28981CB64F29007F1BC6 /* FirstNavigationController.h */,
+				119D28991CB64F29007F1BC6 /* FirstNavigationController.m */,
 				1AAE74381CB561E8007020CC /* TransitionDelegate */,
 				1AAE73FB1CB54B22007020CC /* Supporting Files */,
 				1AAE74351CB55C9B007020CC /* UIColor+Random.h */,
@@ -165,6 +176,10 @@
 			children = (
 				1AAE74391CB5636A007020CC /* ZCSTabBarControllerTarnsitionDelegate.h */,
 				1AAE743A1CB5636A007020CC /* ZCSTabBarControllerTarnsitionDelegate.m */,
+				119D28921CB5FB5F007F1BC6 /* ZCSTransitionAnimationController.h */,
+				119D28931CB5FB5F007F1BC6 /* ZCSTransitionAnimationController.m */,
+				119D28951CB64CEF007F1BC6 /* ZCSNavigationControllerTransitionDelegate.h */,
+				119D28961CB64CEF007F1BC6 /* ZCSNavigationControllerTransitionDelegate.m */,
 			);
 			name = TransitionDelegate;
 			sourceTree = "<group>";
@@ -236,7 +251,6 @@
 				TargetAttributes = {
 					1AAE73F71CB54B20007020CC = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 8LM9AMKE5Y;
 					};
 					1AAE74101CB54B22007020CC = {
 						CreatedOnToolsVersion = 7.3;
@@ -304,9 +318,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				119D28971CB64CEF007F1BC6 /* ZCSNavigationControllerTransitionDelegate.m in Sources */,
 				1AAE743B1CB5636A007020CC /* ZCSTabBarControllerTarnsitionDelegate.m in Sources */,
 				1AAE74371CB55C9B007020CC /* UIColor+Random.m in Sources */,
 				1AAE74031CB54B22007020CC /* ViewController.m in Sources */,
+				119D289A1CB64F29007F1BC6 /* FirstNavigationController.m in Sources */,
+				119D28941CB5FB5F007F1BC6 /* ZCSTransitionAnimationController.m in Sources */,
 				1AAE74001CB54B22007020CC /* AppDelegate.m in Sources */,
 				1AAE74301CB54C8F007020CC /* RootViewController.m in Sources */,
 				1AAE73FD1CB54B22007020CC /* main.m in Sources */,
@@ -452,6 +469,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ZCSTransitionDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cusen.ZCSTransitionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -464,6 +482,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ZCSTransitionDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cusen.ZCSTransitionDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -535,6 +554,7 @@
 				1AAE74271CB54B22007020CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1AAE74281CB54B22007020CC /* Build configuration list for PBXNativeTarget "ZCSTransitionDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +563,7 @@
 				1AAE742A1CB54B22007020CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1AAE742B1CB54B22007020CC /* Build configuration list for PBXNativeTarget "ZCSTransitionDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -551,6 +572,7 @@
 				1AAE742D1CB54B22007020CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
