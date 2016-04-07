@@ -36,6 +36,11 @@
          }
     }
     
+    if (self.viewControllers.count == 1 && self.panGesture) {
+        [self.view removeGestureRecognizer:self.panGesture];
+        self.panGesture = nil;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
