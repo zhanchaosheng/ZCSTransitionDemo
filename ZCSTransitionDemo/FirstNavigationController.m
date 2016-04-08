@@ -9,13 +9,11 @@
 #import "FirstNavigationController.h"
 #import "ZCSNavigationControllerTransitionDelegate.h"
 #import "UIColor+Random.h"
-#import "ZCSTransitionAnimationController.h"
 
 @interface FirstNavigationController ()
 
 @property (nonatomic, strong) ZCSNavigationControllerTransitionDelegate *transitionDelegate;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
-@property (nonatomic, strong) ZCSTransitionAnimationController *transitionAnimationController;
 
 @end
 
@@ -27,8 +25,8 @@
     self.transitionDelegate = [[ZCSNavigationControllerTransitionDelegate alloc] init];
     self.delegate = self.transitionDelegate;
     
-    self.interactivePopGestureRecognizer.enabled = YES;
-    self.interactivePopGestureRecognizer.delegate = (id)self;
+//    self.interactivePopGestureRecognizer.enabled = YES;
+//    self.interactivePopGestureRecognizer.delegate = (id)self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -41,10 +39,10 @@
          }
     }
     
-//    if (self.viewControllers.count == 1 && self.panGesture) {
-//        [self.view removeGestureRecognizer:self.panGesture];
-//        self.panGesture = nil;
-//    }
+    if (self.viewControllers.count == 1 && self.panGesture) {
+        [self.view removeGestureRecognizer:self.panGesture];
+        self.panGesture = nil;
+    }
     
 }
 
@@ -53,30 +51,41 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (self.viewControllers.count == 1)
-    {
-        return NO;
-    }
-    return  YES;
-}
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+//{
+//    if (self.viewControllers.count == 1)
+//    {
+//        return NO;
+//    }
+//    return  YES;
+//}
 
 - (void)HandleFirstNavigationVCRighBarBtn:(UIBarButtonItem *)sender {
     UIViewController *pushVC = [[UIViewController alloc] init];
     pushVC.view.backgroundColor = [UIColor blueColor];
     pushVC.navigationItem.title = @"pushVC";
     
-//    if (self.panGesture == nil) {
-//        self.panGesture = [[UIPanGestureRecognizer alloc] init];
-//        [self.panGesture addTarget:self action:@selector(handlePan:)];
-//        [self.view addGestureRecognizer:self.panGesture];
-//    }
+    if (self.panGesture == nil) {
+        self.panGesture = [[UIPanGestureRecognizer alloc] init];
+        [self.panGesture addTarget:self action:@selector(handlePan:)];
+        [self.view addGestureRecognizer:self.panGesture];
+    }
     
     [self pushViewController:pushVC animated:YES];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)gesture {
+    //如果是navigationController的根视图则将手势传递给tabBarController
+    if (self.viewControllers.count == 1 && self.panGesture &&
+        !self.transitionDelegate.interactive) {
+        if (self.tabBarController &&
+            [self.tabBarController respondsToSelector:@selector(handlePan:)]) {
+            [self.tabBarController performSelector:@selector(handlePan:)
+                                        withObject:gesture
+                                        withObject:nil];
+        }
+        return;
+    }
     UIView *view = self.view;
     if (gesture.state == UIGestureRecognizerStateBegan)
     {
