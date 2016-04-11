@@ -10,7 +10,7 @@
 #import "ZCSNavigationControllerTransitionDelegate.h"
 #import "UIColor+Random.h"
 
-@interface FirstNavigationController ()
+@interface FirstNavigationController ()<UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) ZCSNavigationControllerTransitionDelegate *transitionDelegate;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
@@ -64,10 +64,12 @@
     UIViewController *pushVC = [[UIViewController alloc] init];
     pushVC.view.backgroundColor = [UIColor blueColor];
     pushVC.navigationItem.title = @"pushVC";
+    pushVC.hidesBottomBarWhenPushed = YES;
     
     if (self.panGesture == nil) {
         self.panGesture = [[UIPanGestureRecognizer alloc] init];
         [self.panGesture addTarget:self action:@selector(handlePan:)];
+        self.panGesture.delegate = self;
         [self.view addGestureRecognizer:self.panGesture];
     }
     
@@ -76,16 +78,16 @@
 
 - (void)handlePan:(UIPanGestureRecognizer *)gesture {
     //如果是navigationController的根视图则将手势传递给tabBarController
-    if (self.viewControllers.count == 1 && self.panGesture &&
-        !self.transitionDelegate.interactive) {
-        if (self.tabBarController &&
-            [self.tabBarController respondsToSelector:@selector(handlePan:)]) {
-            [self.tabBarController performSelector:@selector(handlePan:)
-                                        withObject:gesture
-                                        withObject:nil];
-        }
-        return;
-    }
+//    if (self.viewControllers.count == 1 && self.panGesture &&
+//        !self.transitionDelegate.interactive) {
+//        if (self.tabBarController &&
+//            [self.tabBarController respondsToSelector:@selector(handlePan:)]) {
+//            [self.tabBarController performSelector:@selector(handlePan:)
+//                                        withObject:gesture
+//                                        withObject:nil];
+//        }
+//        return;
+//    }
     UIView *view = self.view;
     if (gesture.state == UIGestureRecognizerStateBegan)
     {
@@ -119,6 +121,16 @@
     }
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    
+    if (self.viewControllers.count == 1 &&
+        self.panGesture &&
+        !self.transitionDelegate.interactive) {
+        return YES;
+    }
+    return NO;
+}
 /*
 #pragma mark - Navigation
 
